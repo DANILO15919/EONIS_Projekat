@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SportskaOpremaIT322020.props" />
+</Project>

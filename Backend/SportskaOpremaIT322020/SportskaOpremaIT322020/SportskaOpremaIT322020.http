@@ -1,0 +1,6 @@
+@SportskaOpremaIT322020_HostAddress = http://localhost:5109
+
+GET {{SportskaOpremaIT322020_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
