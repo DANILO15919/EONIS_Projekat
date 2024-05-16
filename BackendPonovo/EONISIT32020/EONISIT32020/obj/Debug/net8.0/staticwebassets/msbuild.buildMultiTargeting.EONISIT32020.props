@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EONISIT32020.props" />
+</Project>
