@@ -24,6 +24,8 @@ builder.Services.AddScoped<IBrendService, BrendService>();
 builder.Services.AddScoped<IKorisnikService, KorisnikService>();
 builder.Services.AddScoped<IKupacService, KupacService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IProizvodService, ProizvodService>();
+builder.Services.AddScoped<IPorudzbinaService, PorudzbinaService>();
 
 var app = builder.Build();
 
