@@ -8,6 +8,8 @@ using System.Data;
 
 namespace EONISIT32020.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BrendController : ControllerBase

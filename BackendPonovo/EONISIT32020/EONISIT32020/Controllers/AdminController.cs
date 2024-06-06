@@ -4,9 +4,11 @@ using EONISIT32020.Models;
 using EONISIT32020.Services;
 using Microsoft.AspNetCore.Mvc;
 using EONISIT32020.Models.DTOs.AdminDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EONISIT32020.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase

@@ -3,9 +3,12 @@ using EONISIT32020.Models;
 using EONISIT32020.Services;
 using Microsoft.AspNetCore.Mvc;
 using EONISIT32020.Models.DTOs.KorisnikDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EONISIT32020.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisnikController : ControllerBase
@@ -54,6 +57,27 @@ namespace EONISIT32020.Controllers
             try
             {
                 Korisnik type = await _korisnikService.GetKorisnikById(korisnikId);
+
+                if (type == null)
+                    return NotFound();
+
+                KorisnikDTO typeDto = _mapper.Map<KorisnikDTO>(type);
+
+                return Ok(typeDto);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
+        [HttpGet("/email/{korisnikEmail}")]
+        public async Task<ActionResult<KorisnikDTO>> GetKorisnikByEmail(string korisnikEmail)
+        {
+            try
+            {
+                Korisnik type = await _korisnikService.GetKorisnikByEmail(korisnikEmail);
 
                 if (type == null)
                     return NotFound();

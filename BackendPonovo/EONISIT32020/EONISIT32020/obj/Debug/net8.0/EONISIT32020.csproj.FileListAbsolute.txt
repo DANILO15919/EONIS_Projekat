@@ -160,3 +160,4 @@ C:\Users\danil\Desktop\projekat Eksploatacije\Projekat\EONIS_Projekat\BackendPon
 C:\Users\danil\Desktop\projekat Eksploatacije\Projekat\EONIS_Projekat\BackendPonovo\EONISIT32020\EONISIT32020\obj\Debug\net8.0\EONISIT32020.pdb
 C:\Users\danil\Desktop\projekat Eksploatacije\Projekat\EONIS_Projekat\BackendPonovo\EONISIT32020\EONISIT32020\obj\Debug\net8.0\EONISIT32020.genruntimeconfig.cache
 C:\Users\danil\Desktop\projekat Eksploatacije\Projekat\EONIS_Projekat\BackendPonovo\EONISIT32020\EONISIT32020\obj\Debug\net8.0\ref\EONISIT32020.dll
+C:\Users\danil\Desktop\projekat Eksploatacije\Projekat\EONIS_Projekat\BackendPonovo\EONISIT32020\EONISIT32020\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

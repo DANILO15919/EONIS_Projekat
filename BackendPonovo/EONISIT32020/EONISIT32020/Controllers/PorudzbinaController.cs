@@ -2,10 +2,12 @@
 using EONISIT32020.Models;
 using EONISIT32020.Models.DTOs.PorudzbinaDTOs;
 using EONISIT32020.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EONISIT32020.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class PorudzbinaController : ControllerBase

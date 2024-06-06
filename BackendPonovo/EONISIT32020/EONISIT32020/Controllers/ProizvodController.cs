@@ -3,10 +3,11 @@ using EONISIT32020.Models.DTOs.ProizvodDTOs;
 using EONISIT32020.Models;
 using EONISIT32020.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EONISIT32020.Controllers
 {
-
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProizvodController : ControllerBase

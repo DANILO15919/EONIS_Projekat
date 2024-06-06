@@ -3,9 +3,11 @@ using EONISIT32020.Models;
 using EONISIT32020.Services;
 using Microsoft.AspNetCore.Mvc;
 using EONISIT32020.Models.DTOs.KupacDTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EONISIT32020.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class KupacController : ControllerBase

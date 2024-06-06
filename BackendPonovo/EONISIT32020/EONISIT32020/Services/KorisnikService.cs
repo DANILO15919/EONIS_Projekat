@@ -1,12 +1,15 @@
 ﻿using EONISIT32020.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing.Drawing2D;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace EONISIT32020.Services
 {
     public class KorisnikService : IKorisnikService
     {
         ProdavnicaOdeceIt322020Context _dbContext;
+        private readonly List<Korisnik> _users = new List<Korisnik>();
 
         public KorisnikService(ProdavnicaOdeceIt322020Context dbContext)
         {
@@ -94,6 +97,67 @@ namespace EONISIT32020.Services
             {
                 throw new Exception(ex.Message, ex);
             }
+        }
+
+        public async Task<Korisnik> GetKorisnikByEmail(string email)
+        {
+            try
+            {
+                Korisnik? search = await _dbContext.Korisniks.FirstOrDefaultAsync(w => w.Email == email);
+
+                if (search == null)
+                    throw new KeyNotFoundException();
+
+                return search;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        
+        }
+
+        public string HashPassword(string password)
+        {
+            using var sha256 = SHA256.Create();
+            var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+            return Convert.ToBase64String(bytes);
+        }
+
+        public bool VerifyPassword(string password, string hashedPassword)
+        {
+            var hashedInputPassword = password;
+            return hashedPassword == hashedInputPassword;
+        }
+
+        public bool ValidateUser(string email, string password)
+        {
+            try
+            {
+                var user = GetKorisnikByEmail(email).Result;
+                if (user == null) return false;
+
+                return VerifyPassword(password, user.Lozinka);
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("Wrong credentials", ex);
+            }
+
+        }
+
+        public bool Register(string email, string password, string role)
+        {
+            if (_users.Any(u => u.Email == email))
+            {
+                return false; // User already exists
+            }
+
+            var hashedPassword = HashPassword(password);
+            _users.Add(new Korisnik { Email = email, Lozinka = hashedPassword, Uloga = role });
+            return true;
         }
     }
 }
