@@ -25,10 +25,21 @@ namespace EONISIT32020.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] KorisnikCreateDTO model)
+        public async Task<IActionResult> RegisterAsync([FromBody] KorisnikCreateDTO model)
         {
             if (_userService.Register(model.Email, model.Lozinka, model.Uloga))
             {
+                Korisnik toRegister = new Korisnik();
+
+                toRegister.Email = model.Email;
+                toRegister.Lozinka = model.Lozinka;
+                toRegister.Uloga = "Customer";
+
+
+                Korisnik registered = await _userService.CreateKorisnik(toRegister);
+
+
+
                 return Ok(new { Message = "Registration successful" });
             }
             return BadRequest(new { Message = "User already exists" });

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EONISIT32020")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d196fcb0ba30c7ad0f6cd4e74ee159041abd6ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43bf0acf5404732274e258e8c357431aed3e9a90")]
 [assembly: System.Reflection.AssemblyProductAttribute("EONISIT32020")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EONISIT32020")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

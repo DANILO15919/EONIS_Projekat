@@ -154,9 +154,6 @@ namespace EONISIT32020.Services
             {
                 return false; // User already exists
             }
-
-            var hashedPassword = HashPassword(password);
-            _users.Add(new Korisnik { Email = email, Lozinka = hashedPassword, Uloga = role });
             return true;
         }
     }

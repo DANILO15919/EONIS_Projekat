@@ -21,7 +21,7 @@ namespace EONISIT32020.Controllers
             _korisnikService = korisnikService;
             _mapper = mapper;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<List<KorisnikDTO>>> GetKorisniks()
         {
@@ -130,6 +130,7 @@ namespace EONISIT32020.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<KorisnikDTO>> CreateKorisnik(KorisnikCreateDTO korisnik)
         {
