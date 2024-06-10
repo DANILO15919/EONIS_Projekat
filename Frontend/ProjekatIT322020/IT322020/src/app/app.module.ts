@@ -9,13 +9,15 @@ import { ProductServiceService } from 'src/services/product-service.service';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SportrocksComponent } from './sportrocks/sportrocks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     LoginComponent,
-    PaymentComponent
+    PaymentComponent,
+    SportrocksComponent
   ],
   imports: [
     BrowserModule,

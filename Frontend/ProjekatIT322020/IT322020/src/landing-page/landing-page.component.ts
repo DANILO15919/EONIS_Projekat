@@ -26,8 +26,6 @@ export class LandingPageComponent implements OnInit {
   loadProducts(): void {
     this.productService.GetProizvods().subscribe(
       (res: any) => {
-        console.log("Entered here");
-        console.log(res); 
         this.products = res;
         this.totalProducts = this.products.length;
       },
@@ -45,8 +43,8 @@ export class LandingPageComponent implements OnInit {
     // Search filter
     if (this.searchText) {
       filtered = filtered.filter(product => {
-        const productName = product.Naziv ? product.Naziv.toLowerCase() : ''; // Null check
-        return productName == this.searchText.toLowerCase();
+        const productName = product.naziv ? product.naziv.toLowerCase() : ''; // Null check
+        return productName.includes(this.searchText.toLowerCase());
       });
     }
 
@@ -69,26 +67,31 @@ export class LandingPageComponent implements OnInit {
 
   applyFilters(): void {
     // Apply search filter
-    const searchTextLowerCase = this.searchText.toLowerCase(); // Convert searchText to lowercase
-    const filteredProducts = this.products.filter(product => {
-      const productName = product.naziv ? product.naziv.toLowerCase() : ''; // Null check
-      return productName == searchTextLowerCase;
-    });
+    const searchTextLowerCase = this.searchText.toLowerCase();
+    if (searchTextLowerCase) {
+      this.filteredProducts1 = this.products.filter(product => {
+        const productName = product.Naziv ? product.Naziv.toLowerCase() : '';
+        return productName.includes(searchTextLowerCase);
+      });
+    } else {
+      // If search text is empty, reset filteredProducts to all products
+      this.filteredProducts1 = this.products;
+    }
   
-    // Apply sort filter
+    // Apply sort filter (if needed)
     if (this.sortColumn) {
-      filteredProducts.sort((a, b) => {
+      this.filteredProducts.sort((a, b) => {
         return a[this.sortColumn] > b[this.sortColumn] ? 1 : -1;
       });
     }
-  
   }
   
 
   searchProducts(searchText: string): void {
-    this.searchText = searchText.trim().toLowerCase(); // Convert search text to lowercase
-        this.applyFilters(); // Apply filters to update the filtered products
+    this.searchText = searchText.trim().toLowerCase();
+    this.applyFilters(); // Ensure to apply filters after updating search text
   }
+  
 
   sortBy(column: string): void {
     if (this.sortColumn === column) {
@@ -97,14 +100,12 @@ export class LandingPageComponent implements OnInit {
       this.sortColumn = column;
       this.sortDirection = 'asc';
     }
+  
+    this.applyFilters(); // Ensure to apply filters after updating sort column and direction
   }
 
   onPageChange(page: number): void {
     this.page = page;
-  }
-
-  handleButtonClick(product: any): void {
-    console.log('Button clicked for product:', product);
   }
 
   get totalPages(): number {
@@ -112,8 +113,8 @@ export class LandingPageComponent implements OnInit {
   }
 
   goToPayment(product: any): void {
-    this.nameTEST = product.naziv;
-    this.router.navigate(['/payment', { name: product.naziv, price: product.cena }]);
+    this.nameTEST = product.slika;
+    this.router.navigate(['/payment', { name: product.naziv, price: product.cena, picture: product.slika }]);
   }
 
   logout(): void {

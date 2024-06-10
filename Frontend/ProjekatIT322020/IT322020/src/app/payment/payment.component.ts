@@ -11,6 +11,7 @@ export class PaymentComponent implements OnInit{
 
   productName: string | null = '';
   productPrice: number | null = null;
+  productImage: string | null = '';
 
   constructor(private stripeService: StripeService,private route: ActivatedRoute,private router: Router) { }
 
@@ -18,6 +19,7 @@ export class PaymentComponent implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.productName = params.get('name');
       this.productPrice = +params.get('price')!;
+      this.productImage = params.get('picture');
     });
   }
 

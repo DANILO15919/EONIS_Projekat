@@ -1,36 +1,61 @@
-/* Styles for the payment container */
+
+/* CSS for improved styling */
 .payment-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .payment-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .payment-container p {
-    margin-bottom: 10px;
-  }
-  
-  .payment-container button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .payment-container button:hover {
-    background-color: #0056b3;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.payment-details {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.product-details {
+  text-align: center;
+}
+
+.product-picture {
+  margin-bottom: 20px;
+}
+
+.product-picture img {
+  max-width: 200px;
+  border-radius: 8px;
+}
+
+.payment-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buy-button, .cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.buy-button {
+  background-color: #000000;
+  color: #fff;
+}
+
+.buy-button:hover {
+  background-color: #5a8fc7;
+}
+
+.cancel-button {
+  background-color: #000000;
+  color: #fff;
+}
+
+.cancel-button:hover {
+  background-color: #bd2130;
+}

@@ -1,14 +1,20 @@
 <div class="payment-container">
-    <h2>Product Payment</h2>
-    <div class="payment-container">
-      <h2>Payment</h2>
-      <div></div>
+  <div class="payment-details">
+    <h2>One more step!</h2>
+    <div class="product-details">
+      <h3>Payment</h3>
+      <!-- Picture div -->
+      <div class="product-picture">
+        <img [src]="productImage" alt="Product Image">
+      </div>
       <p><strong>Product:</strong> {{ productName }}</p>
-      <p><strong>Price:</strong> {{ productPrice | currency:'USD' }} </p>
-      <!-- Add Stripe payment form here -->
+      <p><strong>Price:</strong> {{ productPrice | currency:'USD' }}</p>
     </div>
-    
-    <button (click)="handlePayment()">Buy now!</button>
-    <button (click)="navigateToDestination()">Cancel</button>
   </div>
   
+  <!-- Payment buttons -->
+  <div class="payment-buttons">
+    <button class="buy-button" (click)="handlePayment()">Buy now!</button>
+    <button class="cancel-button" (click)="navigateToDestination()">Cancel</button>
+  </div>
+</div>
