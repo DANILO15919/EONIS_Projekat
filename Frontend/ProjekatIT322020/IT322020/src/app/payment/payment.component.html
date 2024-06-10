@@ -1,0 +1,14 @@
+<div class="payment-container">
+    <h2>Product Payment</h2>
+    <div class="payment-container">
+      <h2>Payment</h2>
+      <div></div>
+      <p><strong>Product:</strong> {{ productName }}</p>
+      <p><strong>Price:</strong> {{ productPrice | currency:'USD' }} </p>
+      <!-- Add Stripe payment form here -->
+    </div>
+    
+    <button (click)="handlePayment()">Buy now!</button>
+    <button (click)="navigateToDestination()">Cancel</button>
+  </div>
+  

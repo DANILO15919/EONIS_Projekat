@@ -1,0 +1,39 @@
+<header class="header">
+  <div class="header-left">
+    <span>Welcome</span>
+  </div>
+  <h1 class="header-title">Product Payment</h1>
+  <div class="header-right">
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="product-container">
+  <h2>Products</h2>
+  <!-- Search input -->
+  <input type="text" #searchInput placeholder="Search...">
+<button (click)="searchProducts(searchInput.value)">Search</button>
+  <!-- Sort buttons -->
+  <!-- Sort buttons -->
+  <button (click)="sortBy('naziv')">Sort by Name</button>
+  <button (click)="sortBy('cena')">Sort by Price</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Naziv</th>
+        <th>Cena</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredProducts">
+        <td>{{ product.naziv }}</td>
+        <td>{{ product.cena | currency:'USD' }}</td>
+        <td>
+          <button (click)="goToPayment(product)">Buy</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
